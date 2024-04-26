@@ -1,4 +1,4 @@
-# OnlyFlans HITO 3 - Sitio Web de Pasteles y Postres
+# OnlyFlans HITO 4 - Sitio Web de Pasteles y Postres
 ------
 <div style="text-align:center">
     <img src="https://doc-images-adl.s3.sa-east-1.amazonaws.com/verde+en+fondo+blanco.png" alt="Texto alternativo 1" width="200" style="display:inline">
@@ -14,7 +14,10 @@ OnlyFlans es un proyecto de sitio web desarrollado en Django para una PYME dedic
     <img src="https://github.com/elvis-codev/OnlyFlans_Hito3/blob/main/Screenshots/Captura4.png" width="200" />
     <img src="https://github.com/elvis-codev/OnlyFlans_Hito3/blob/main/Screenshots/Captura5.png" width="200" />
 </div>
-
+<div>
+    <img src="https://github.com/elvis-codev/OnlyFlans_Hito4/blob/main/Screenshots/Captura6.png" width="200" />
+    <img src="https://github.com/elvis-codev/OnlyFlans_Hito4/blob/main/Screenshots/Captura7.png" width="200" />
+</div>
 ## Características Principales
 
 - Presentación de productos de pastelería y postres.
