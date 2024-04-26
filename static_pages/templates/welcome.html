@@ -42,6 +42,27 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="/contacto/">Contacto</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/testimonios/">Testimonios</a>
+                        </li>
+                    </ul>
+                    <!-- login -->
+                    <ul class="navbar-nav ml-auto">
+                        {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <p>Bienvenido {{ user.username }}</p>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'logout' %}">Cerrar sesión</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'login' %}">Iniciar sesión</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'registrate' %}">Registrate</a>
+                        </li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
@@ -50,8 +71,8 @@
     <main class="flex-shrink-0">
         <div class="container">
             <h1 class="mt-5">¡Bienvenido
-                {% if nombre_usuario %}
-                {{ nombre_usuario }}
+                {% if user.username %}
+                {{ user.username }}!
                 {% else %}
                 Cliente!
                 {% endif %}</h1>

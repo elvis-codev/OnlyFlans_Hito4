@@ -1,15 +1,108 @@
-<div class="container">
-    <h2>Iniciar sesión</h2>
-    <form method="post">
-        {% csrf_token %}
-        <div class="form-group">
-            <label for="username">Nombre de usuario:</label>
-            <input type="text" class="form-control" id="username" name="username" required>
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acerca de OnlyFlans</title>
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    {% load static %}
+
+    <header>
+        <div class="container text-center">
+            <a class="navbar-brand mb-0" href="#">
+                <img src="{% static '/img/logo.png' %}" alt=""
+                    style="width: 300px; height: auto; margin-top: 30px; margin-bottom: 20px;">
+            </a>
         </div>
-        <div class="form-group">
-            <label for="password">Contraseña:</label>
-            <input type="password" class="form-control" id="password" name="password" required>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/acerca/">Acerca</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/bienvenido/">Bienvenido</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/contacto/">Contacto</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/testimonios/">Testimonios</a>
+                        </li>
+                    </ul>
+                    <!-- login -->
+                    <ul class="navbar-nav ml-auto">
+                        {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <p>Bienvenido {{ user.username }}</p>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'logout' %}">Cerrar sesión</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'login' %}">Iniciar sesión</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'registrate' %}">Registrate</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-4 py-2"></div>
+            <div class="col-4 py-2 text-center">
+                <h2>Iniciar sesión</h2>
+
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="username">Nombre de usuario:</label>
+                        <input type="text" class="form-control" id="username" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Contraseña:</label>
+                        <input type="password" class="form-control" id="password" name="password" required>
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+                </form>
+            </div>
         </div>
-        <button type="submit" class="btn btn-primary">Iniciar sesión</button>
-    </form>
-</div>
+
+
+
+
+        <footer class="footer mt-auto py-3 bg-light">
+            <div class="container text-center">
+                <p class="text-muted small mb-4 mb-lg-0">© Desarrollado por Elvis Andrade para Desafío
+                    Latam.</p>
+            </div>
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

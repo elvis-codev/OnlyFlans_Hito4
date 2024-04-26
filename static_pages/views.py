@@ -1,7 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
-from .forms import ContactFormForm, UserForm
-from .models import Flan, ContactForm
+from .forms import ContactFormForm, UserForm, TestimonialForm
+from .models import Flan, ContactForm, Testimonial
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
@@ -64,3 +64,22 @@ class CustomLoginView(LoginView):
 
 class CustomLogoutView(LogoutView):
     template_name = '/'
+
+
+@login_required
+def testimonios(request):
+    testimonios = Testimonial.objects.all()
+    return render(request, 'testimonios.html', {'testimonios': testimonios})
+
+
+def testimonios(request):
+    testimonios = Testimonial.objects.all()
+    form = TestimonialForm(request.POST or None)
+    if request.method == 'POST':
+        if form.is_valid():
+            testimonio = form.save(commit=False)
+            testimonio.usuario = request.user
+            testimonio.save()
+            messages.success(request, 'Gracias por tu testimonio.')
+            return redirect('testimonios')
+    return render(request, 'testimonios.html', {'testimonios': testimonios, 'form': form})

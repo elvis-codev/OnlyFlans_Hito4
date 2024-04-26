@@ -28,4 +28,5 @@ urlpatterns = [
     path('exito/', views.exito, name='exito'),
     path('registrate/', views.registro, name='registrate'),
     path('registration/', include('django.contrib.auth.urls')),
+    path('testimonios/', views.testimonios, name='testimonios'),
 ]

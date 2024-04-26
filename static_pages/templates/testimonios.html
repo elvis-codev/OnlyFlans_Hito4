@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -68,59 +70,53 @@
             </div>
         </nav>
     </header>
-    <div class="px-4 py-5 my-5 text-center">
-        <h1 class="display-5 fw-bold">Bienvenido a "OnlyFlans"</h1>
-        <br>
-        <div class="col-lg-6 mx-auto">
-            <p>
-                En nuestra tienda de flanes "OnlyFlans" ofrecemos una amplia variedad de exquisitos flanes
-                caseros,
-                preparados con los ingredientes más frescos y de la más alta calidad. En nuestro sitio web, podrás
-                explorar
-                nuestro catálogo, realizar pedidos en línea y disfrutar de la comodidad de recibir tus flanes
-                directamente en tu
-                puerta.
-            </p>
-        </div>
-    </div>
-
-
-    <div class="container my-5">
-        <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
-            <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
-                <h1 class="display-4 fw-bold lh-1">Descripción de la PYME</h1>.
-                <p>
-                    "OnlyFlans" es una pequeña y acogedora tienda de flanes fundada en el año 2018 por la
-                    apasionada repostera
-                    Julia Fernández. Julia, con más de una década de experiencia en la preparación de postres, decidió
-                    seguir su
-                    pasión y compartir su amor por los flanes con el mundo. Desde entonces, nos hemos comprometido a
-                    proporcionar a
-                    nuestros clientes la mejor experiencia de sabor y calidad en cada bocado. Nuestros flanes son
-                    elaborados de
-                    forma artesanal, utilizando recetas tradicionales y los ingredientes más frescos, lo que garantiza
-                    un sabor
-                    inigualable y una textura suave y cremosa.
-                </p>
-                <p>
-                    <strong>Datos de la Empresa:</strong><br>
-                <ul>
-                    <li><strong>Nombre:</strong> Tienda de Flanes "OnlyFlans"</li>
-                    <li><strong>Tipo de Empresa:</strong> Pequeña y Mediana Empresa (PYME)</li>
-                    <li><strong>Fecha de Creación:</strong> 15 de julio de 2018</li>
-                    <li><strong>Propietaria:</strong> Julia Fernández</li>
-                    <li><strong>Dirección:</strong> Calle Principal, Nº 123, Santiago, Chile</li>
-                    <li><strong>Teléfono:</strong> +569 72255368</li>
-                    <li><strong>Correo Electrónico:</strong> info@onlyflans.com</li>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <h2 class="mt-5 mb-4">Testimonios de Clientes</h2>
+                <ul class="list-group">
+                    {% for testimonio in testimonios %}
+                    <li class="list-group-item">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <strong>{{ testimonio.usuario.username }}</strong>
+                            </div>
+                            <div>
+                                {{ testimonio.fecha|date:"d/m/Y" }}
+                            </div>
+                        </div>
+                        <div>{{ testimonio.testimonio }}</div>
                     </li>
+                    {% empty %}
+                    <li class="list-group-item">No hay testimonios disponibles.</li>
+                    {% endfor %}
                 </ul>
-                </p>
-            </div>
-            <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
-                <img class="rounded-lg-3" src="{% static '/img/pyme.png' %}" alt="" width="720">
+
+
+                <h3 class="mt-5 mb-4">Deja tu testimonio</h3>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="usuario" class="form-label">Usuario:</label>
+                        <input type="text" class="form-control" id="usuario" name="usuario" value="{{ user.username }}"
+                            readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="fecha" class="form-label">Fecha:</label>
+                        <input type="text" class="form-control" id="fecha" name="fecha" value="{% now 'd-m-Y H:i' %}"
+                            readonly>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="testimonio" class="form-label">Testimonio:</label>
+                        <textarea class="form-control" id="testimonio" name="testimonio" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Enviar testimonio</button>
+                </form>
             </div>
         </div>
     </div>
+
 
 
     <footer class="footer mt-auto py-3 bg-light">

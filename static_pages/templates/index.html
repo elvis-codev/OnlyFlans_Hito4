@@ -41,12 +41,17 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="/contacto/">Contacto</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/testimonios/">Testimonios</a>
+                        </li>
                     </ul>
                     <!-- login -->
                     <ul class="navbar-nav ml-auto">
                         {% if user.is_authenticated %}
                         <li class="nav-item">
                             <p>Bienvenido {{ user.username }}</p>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{% url 'logout' %}">Cerrar sesión</a>
                         </li>
                         {% else %}

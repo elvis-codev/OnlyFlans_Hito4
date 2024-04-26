@@ -1,5 +1,5 @@
 from django import forms
-from .models import ContactForm
+from .models import ContactForm, Testimonial
 from django.contrib.auth.models import User
 
 class ContactFormForm(forms.Form):
@@ -22,3 +22,14 @@ class UserForm(forms.ModelForm):
         labels = {
             'username': 'Alias',
         }
+
+
+class TestimonialForm(forms.ModelForm):
+    class Meta:
+        model = Testimonial
+        fields = ['nombre', 'correo', 'testimonio']
+
+class TestimonialForm(forms.ModelForm):
+    class Meta:
+        model = Testimonial
+        fields = ['testimonio']

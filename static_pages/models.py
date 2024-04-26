@@ -30,3 +30,11 @@ class ContactForm(models.Model):
         return self.customer_name
 
 
+class Testimonial(models.Model):
+    nombre = models.CharField(max_length=100)
+    correo = models.EmailField(blank=True)
+    testimonio = models.TextField()
+    fecha = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.nombre
