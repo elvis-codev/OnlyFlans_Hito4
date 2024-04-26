@@ -39,6 +39,8 @@ Para ejecutar este proyecto localmente, asegúrate de tener instalado lo siguien
 | TIPO  | username  | password  |
 |---|---|---|
 | superusuario  | admin  | 1234  |
+| user_staff  | administrador  | elvis1234  |
+| user  | Elvis  | 1234  |
 --- 
 
 ## Instrucciones de Instalación
